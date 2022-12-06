@@ -5,61 +5,59 @@ const port = 3001;
 require("dotenv").config();
 
 const { Pool } = require("pg");
+
 const dbHost =
   process.env.DB_HOST ||
   "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
 const isLocalDeploy = process.env.LOCAL_DEPLOY || true;
 
-// const connectionString =
-//   "postgres://cyf_hotel_user:ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY@dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com/cyf_hotel";
-// pool = new Pool({
-//   connectionString,
-//   ssl: {
-//     rejectUnauthorized: true,
-//   },
-// });
+const connectionString =
+  "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
+pool = new Pool({
+  connectionString,
+  ssl: {
+    rejectUnauthorized: true,
+  },
+});
 console.log(dbHost);
 
-// if (isLocalDeploy) {
-//   config = {
-//     user: "cyf_hotel_user",
-//     host: dbHost,
-//     database: "cyf_hotel",
-//     password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
-//     port: 5432,
-//     ssl: {
-//       rejectUnauthorized: isLocalDeploy,
-//     },
-//   };
-// } else {
-//   config = {
-//     user: "cyf_hotel_user",
-//     host: dbHost,
-//     database: "cyf_hotel",
-//     password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
-//     port: 5432,
-//   };
-// }
-
-if ("dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com") {
-  pool = new Pool({
-    connectionString: "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com",
-    ssl: {
-      rejectUnauthorized: true,
-    },
-  });
-} else {
-  //   // if on local
-  pool = new Pool({
+if (isLocalDeploy) {
+  config = {
     user: "cyf_hotel_user",
+    host: dbHost,
+    database: "cyf_hotel",
     password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
     port: 5432,
-    host: "dpg-ce5gfckgqg49410a5dn0-a",
+    ssl: {
+      rejectUnauthorized: isLocalDeploy,
+    },
+  };
+} else {
+  config = {
+    user: "cyf_hotel_user",
+    host: dbHost,
     database: "cyf_hotel",
-  });
+    password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
+    port: 5432,
+  };
 }
 
-const pool = new Pool(config);
+// if ("dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com") {
+//   pool = new Pool({
+//     connectionString: connectionString,
+//     ssl: {
+//       rejectUnauthorized: true,
+//     },
+//   });
+// } else {
+//   pool = new Pool({
+//     user: "cyf_hotel_user",
+//     password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
+//     port: 5432,
+//     host: "dpg-ce5gfckgqg49410a5dn0-a",
+//     database: "cyf_hotel",
+//   });
+// }
 
 app.get("/hotels", function (req, res) {
   console.log(req.method, req.url);
