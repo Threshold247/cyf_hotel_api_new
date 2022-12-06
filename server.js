@@ -6,7 +6,7 @@ const { Pool } = require("pg");
 const dbHost =
   process.env.DB_HOST ||
   "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
-
+const isLocalDeploy = process.env.LOCAL_DEPLOY || true;
 // const connectionString =
 //   "postgres://cyf_hotel_user:ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY@dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com/cyf_hotel";
 // pool = new Pool({
@@ -23,7 +23,7 @@ const pool = new Pool({
   password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
   port: 5432,
   ssl: {
-    rejectUnauthorized: true,
+    rejectUnauthorized: isLocalDeploy,
   },
 });
 
