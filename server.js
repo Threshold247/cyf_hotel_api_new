@@ -3,6 +3,9 @@ const app = express();
 const port = 3001;
 
 const { Pool } = require("pg");
+const dbHost =
+  process.env.DB_HOST ||
+  "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
 
 // const connectionString =
 //   "postgres://cyf_hotel_user:ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY@dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com/cyf_hotel";
@@ -12,12 +15,16 @@ const { Pool } = require("pg");
 //     rejectUnauthorized: true,
 //   },
 // });
+console.log(dbHost);
 const pool = new Pool({
   user: "cyf_hotel_user",
-  host: "dpg-ce5gfckgqg49410a5dn0-a",
+  host: dbHost,
   database: "cyf_hotel",
   password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
   port: 5432,
+  ssl: {
+    rejectUnauthorized: true,
+  },
 });
 
 app.get("/hotels", function (req, res) {
