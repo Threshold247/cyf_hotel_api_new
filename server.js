@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 3001;
 
-require('dotenv').config();
+require("dotenv").config();
 
 const { Pool } = require("pg");
 const dbHost =
@@ -19,28 +19,46 @@ const isLocalDeploy = process.env.LOCAL_DEPLOY || true;
 //   },
 // });
 console.log(dbHost);
-let config;
 
-if (isLocalDeploy) {
-  config = {
-    user: "cyf_hotel_user",
-    host: dbHost,
-    database: "cyf_hotel",
-    password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
-    port: 5432,
+// if (isLocalDeploy) {
+//   config = {
+//     user: "cyf_hotel_user",
+//     host: dbHost,
+//     database: "cyf_hotel",
+//     password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
+//     port: 5432,
+//     ssl: {
+//       rejectUnauthorized: isLocalDeploy,
+//     },
+//   };
+// } else {
+//   config = {
+//     user: "cyf_hotel_user",
+//     host: dbHost,
+//     database: "cyf_hotel",
+//     password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
+//     port: 5432,
+//   };
+// }
+
+if ("dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com") {
+  pool = new Pool({
+    connectionString: "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com",
     ssl: {
-      rejectUnauthorized: isLocalDeploy,
+      rejectUnauthorized: true,
     },
-  };
+  });
 } else {
-  config = {
+  //   // if on local
+  pool = new Pool({
     user: "cyf_hotel_user",
-    host: dbHost,
-    database: "cyf_hotel",
     password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
     port: 5432,
-  };
+    host: "dpg-ce5gfckgqg49410a5dn0-a",
+    database: "cyf_hotel",
+  });
 }
+
 const pool = new Pool(config);
 
 app.get("/hotels", function (req, res) {
