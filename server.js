@@ -14,7 +14,7 @@ const { Pool } = require("pg");
 // });
 const pool = new Pool({
   user: "cyf_hotel_user",
-  host: "postgres://cyf_hotel_user:ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY@dpg-ce5gfckgqg49410a5dn0-a/cyf_hotel",
+  host: "dpg-ce5gfckgqg49410a5dn0-a",
   database: "cyf_hotels",
   password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
   port: 5432,
