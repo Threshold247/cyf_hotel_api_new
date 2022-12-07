@@ -11,14 +11,14 @@ const dbHost =
   "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
 const isLocalDeploy = process.env.LOCAL_DEPLOY || true;
 
-const connectionString =
-  "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
-pool = new Pool({
-  connectionString,
-  ssl: {
-    rejectUnauthorized: true,
-  },
-});
+// const connectionString =
+//   "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
+// pool = new Pool({
+//   connectionString,
+//   ssl: {
+//     rejectUnauthorized: true,
+//   },
+// });
 console.log(dbHost);
 
 if (isLocalDeploy) {
@@ -41,7 +41,7 @@ if (isLocalDeploy) {
     port: 5432,
   };
 }
-
+// ORIGINAL CODE
 // if ("dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com") {
 //   pool = new Pool({
 //     connectionString: connectionString,
@@ -58,6 +58,12 @@ if (isLocalDeploy) {
 //     database: "cyf_hotel",
 //   });
 // }
+
+app.get("/"),
+  function (req, res) {
+    console.log(req.method);
+    res.send("It works!");
+  };
 
 app.get("/hotels", function (req, res) {
   console.log(req.method, req.url);
