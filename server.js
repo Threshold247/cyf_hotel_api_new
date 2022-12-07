@@ -11,8 +11,8 @@ const dbHost =
   "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
 const isLocalDeploy = process.env.LOCAL_DEPLOY || true;
 
-// const connectionString =
-//   "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
+const connectionString =
+  "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
 // pool = new Pool({
 //   connectionString,
 //   ssl: {
