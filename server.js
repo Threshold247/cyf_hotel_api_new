@@ -16,10 +16,10 @@ const connectionString =
 
 pool = new Pool({
   user: "cyf_hotel_user",
-      host: dbHost,
-      database: "cyf_hotel",
-      password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
-      port: 5432,
+  host: dbHost,
+  database: "cyf_hotel",
+  password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
+  port: 5432,
 });
 
 console.log(dbHost);
@@ -46,11 +46,10 @@ console.log(dbHost);
 // }
 
 // The Routes
-app.get("/"),
-  function (req, res) {
-    console.log(req.method);
-    res.send("It works!");
-  };
+app.get("/", function (req, res) {
+  console.log(req.method);
+  res.send("It works!");
+});
 
 app.get("/hotels", function (req, res) {
   console.log(req.method, req.url);
