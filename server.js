@@ -6,21 +6,21 @@ require("dotenv").config();
 
 const { Pool } = require("pg");
 
-//const dbHost =
-//process.env.DB_HOST ||
-//"dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
+const dbHost =
+  process.env.DB_HOST ||
+  "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
 //const isLocalDeploy = process.env.LOCAL_DEPLOY || true;
 
 // Original code
 const pool = new Pool({
   user: "cyf_hotel_user",
-  host: "dpg-ce5gfckgqg49410a5dn0-a",
+  host: dbHost,
   database: "cyf_hotel",
   password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
   port: 5432,
 });
 
-//console.log(dbHost);
+console.log(dbHost);
 
 // if (isLocalDeploy) {
 //   pool = new Pool({
