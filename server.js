@@ -11,14 +11,17 @@ const dbHost =
   "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
 const isLocalDeploy = process.env.LOCAL_DEPLOY || true;
 
-// const connectionString =
-//   "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
-// pool = new Pool({
-//   connectionString,
-//   ssl: {
-//     rejectUnauthorized: true,
-//   },
-// });
+const connectionString =
+  "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
+
+pool = new Pool({
+  user: "cyf_hotel_user",
+      host: dbHost,
+      database: "cyf_hotel",
+      password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
+      port: 5432,
+});
+
 console.log(dbHost);
 
 // if (isLocalDeploy) {
