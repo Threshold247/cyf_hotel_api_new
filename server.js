@@ -9,7 +9,7 @@ const { Pool } = require("pg");
 const dbHost =
   process.env.DB_HOST ||
   "dpg-cdl9tvd3t39dil2doiu0-a.oregon-postgres.render.com";
-//const isLocalDeploy = process.env.LOCAL_DEPLOY || true;
+let isLocalDeploy = process.env.LOCAL_DEPLOY || true;
 
 // Original code
 const pool = new Pool({
@@ -18,6 +18,9 @@ const pool = new Pool({
   database: "test_w5vw",
   password: "liXSwK3DEfLuj1GLR8d37wrve6Chyb2b",
   port: 5432,
+  ssl: {
+    rejectUnauthorized: isLocalDeploy
+  },
 });
 
 console.log(dbHost);
