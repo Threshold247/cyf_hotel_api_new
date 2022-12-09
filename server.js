@@ -50,7 +50,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/hotels", function (req, res) {
-  console.log(req.method, req.url);
+  console.log(req.method, req.baseUrl);
   pool
     .query("SELECT * FROM hotels")
     .then((result) => res.json(result.rows))
