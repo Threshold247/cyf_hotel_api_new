@@ -14,38 +14,37 @@ const isLocalDeploy = process.env.LOCAL_DEPLOY || true;
 const connectionString =
   "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
 
-
 // Original code
-// pool = new Pool({
-//   user: "cyf_hotel_user",
-//   host: dbHost,
-//   database: "cyf_hotel",
-//   password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
-//   port: 5432,
-// });
+pool = new Pool({
+  user: "cyf_hotel_user",
+  host: dbHost,
+  database: "cyf_hotel",
+  password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
+  port: 5432,
+});
 
 console.log(dbHost);
 
-if (isLocalDeploy) {
-  pool = new Pool({
-    user: "cyf_hotel_user",
-    host: dbHost,
-    database: "cyf_hotel",
-    password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
-    port: 5432,
-    ssl: {
-      rejectUnauthorized: isLocalDeploy,
-    },
-  });
-} else {
-  pool = new Pool({
-    user: "cyf_hotel_user",
-    host: dbHost,
-    database: "cyf_hotel",
-    password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
-    port: 5432,
-  });
-}
+// if (isLocalDeploy) {
+//   pool = new Pool({
+//     user: "cyf_hotel_user",
+//     host: dbHost,
+//     database: "cyf_hotel",
+//     password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
+//     port: 5432,
+//     ssl: {
+//       rejectUnauthorized: isLocalDeploy,
+//     },
+//   });
+// } else {
+//   pool = new Pool({
+//     user: "cyf_hotel_user",
+//     host: dbHost,
+//     database: "cyf_hotel",
+//     password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
+//     port: 5432,
+//   });
+// }
 
 // The Routes
 app.get("/", function (req, res) {
