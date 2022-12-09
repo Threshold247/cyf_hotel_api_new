@@ -8,15 +8,15 @@ const { Pool } = require("pg");
 
 const dbHost =
   process.env.DB_HOST ||
-  "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
+  "dpg-cdl9tvd3t39dil2doiu0-a.oregon-postgres.render.com";
 //const isLocalDeploy = process.env.LOCAL_DEPLOY || true;
 
 // Original code
 const pool = new Pool({
-  user: "cyf_hotel_user",
+  user: "test_w5vw_user",
   host: dbHost,
-  database: "cyf_hotel",
-  password: "ZSJsNLO8dv7A2R6mtgmdkGwXZqINIqDY",
+  database: "test_w5vw",
+  password: "liXSwK3DEfLuj1GLR8d37wrve6Chyb2b",
   port: 5432,
 });
 
@@ -50,7 +50,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/hotels", function (req, res) {
-  console.log(req.method, req.baseUrl);
+  console.log(req.method, req.originalUrl);
   pool
     .query("SELECT * FROM hotels")
     .then((result) => res.json(result.rows))
