@@ -11,11 +11,8 @@ const dbHost =
   "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
 const isLocalDeploy = process.env.LOCAL_DEPLOY || true;
 
-const connectionString =
-  "dpg-ce5gfckgqg49410a5dn0-a.oregon-postgres.render.com";
-
 // Original code
-pool = new Pool({
+const pool = new Pool({
   user: "cyf_hotel_user",
   host: dbHost,
   database: "cyf_hotel",
