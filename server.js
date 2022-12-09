@@ -48,7 +48,7 @@ console.log(dbHost);
 
 // The Routes
 app.get("/", function (req, res) {
-  console.log(req.method);
+  console.log(req.method, req.url, req.DB_HOST);
   res.send("It works!");
 });
 
